@@ -1,6 +1,12 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { showInformation } from "../utils/infoSlice";
 
 const VideoTitle = ({ title, overview }) => {
+  const dispatch = useDispatch();
+  const showinfo = () => {
+    dispatch(showInformation());
+  };
   return (
     <div className="pt-[20%] px-24 absolute text-white bg-gradient-to-r from-black w-full aspect-video">
       <h1 className="text-6xl font-bold">{title}</h1>
@@ -9,7 +15,10 @@ const VideoTitle = ({ title, overview }) => {
         <button className="p-4 px-12  bg-white rounded-lg hover:bg-opacity-50 text-black text-xl">
           ▶ Play
         </button>
-        <button className="p-4 px-12 mx-4 bg-slate-400 rounded-lg text-black text-xl">
+        <button
+          className="p-4 px-12 mx-4 bg-slate-400 rounded-lg text-black text-xl cursor-pointer "
+          onClick={showinfo}
+        >
           ℹ️ More info
         </button>
       </div>
